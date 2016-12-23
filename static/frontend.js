@@ -61,12 +61,19 @@ app.controller('ProductController', function($scope, fitlife, $stateParams, $sta
       $scope.product = product;
     });
 
-  $scope.addToCart = function() {
+  $scope.addToCart = function(product) {
     fitlife.addToCart($stateParams.id)
       .success(function() {
         console.log('Added to cart');
         $scope.addSuccessful = true;
       });
+    // var oldCart = $cookies.get('cart');
+		// if(oldCart === undefined){
+		// 	var newCart = name;
+		// }else{
+		// 	$scope.newCart = oldCart + ',' + name;
+		// }
+    // $cookies.put('cart', name);
   };
 
 });
@@ -79,6 +86,7 @@ app.controller('LoginController', function($scope, fitlife, $state) {
         $state.go('home');
       })
       .error(function() {
+        console.log(data);
         console.log('Login error');
         $scope.loginFailed = true;
       });
@@ -128,13 +136,13 @@ app.factory('fitlife', function($http, $rootScope, $cookies) {
   };
 
   service.getProducts = function() {
-    return $http.get('/fitlife/products');
-  };
-  service.getProduct = function(id) {
-    return $http.get('/fitlife/product/' + id);
+    return $http.get('/products');
+};
+  service.getProduct = function() {
+    return $http.get('/product');
   };
   service.login = function(username, password) {
-    return $http.post('/fitlife/login', {
+    return $http.post('/login', {
       username: username,
       password: password
     }).success(function(data) {
@@ -143,16 +151,24 @@ app.factory('fitlife', function($http, $rootScope, $cookies) {
       $cookies.putObject('loginData', data);
     });
   };
-  service.addToCart = function(productId) {
-    return $http.post('/fitlife/shopping_cart', {
-      product_id: productId,
-      auth_token: service.authToken
+  // service.addToCart = function(productId) {
+  //   return $http.post('/shopping_cart', {
+  //     product_id: productId,
+  //     auth_token: service.authToken
+  //   });
+  // };
+  service.addToCart = function(product) {
+    var url = '/add_shopping_cart';
+    return $http({
+      method: 'POST',
+      url: url,
+      data: product
     });
   };
   service.getCartItems = function() {
     return $http({
       method: 'GET',
-      url: '/fitlife/shopping_cart',
+      url: '/shopping_cart',
       params: { auth_token: service.authToken }
     }).then(function(response) {
       var items = response.data;
@@ -168,7 +184,7 @@ app.factory('fitlife', function($http, $rootScope, $cookies) {
 
   service.checkout = function(address) {
     address.auth_token = service.authToken;
-    return $http.post('/fitlife/shopping_cart/checkout', address);
+    return $http.post('/shopping_cart/checkout', address);
   };
   return service;
 });

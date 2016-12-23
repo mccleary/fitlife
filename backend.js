@@ -42,12 +42,10 @@ const user = mongoose.model('user', {
 });
 
 
-
-
 app.post('/login',function(req,res){
-  let token = uid(16);
-  let id = req.body.username;
-  let pwd = req.body.password;
+  var token = uid(16);
+  var id = req.body.username;
+  var pwd = req.body.password;
   user.findById(id)
   .then(function(data){
     return bcrypt.compare(pwd,data.password);
@@ -57,8 +55,8 @@ app.post('/login',function(req,res){
       return user.update(
           { _id: id },
           { $set: { token : token , token_added_on : new Date()} }
-        )};
-      })
+      );
+      }
   .then(function(res){
     res.send(auth_token);
   })
@@ -68,7 +66,7 @@ app.post('/login',function(req,res){
 });
 
 function authCheck(req,res,next){
-  let token = req.query.auth_token;
+  var token = req.query.auth_token;
   user.find({token : token}).then(function(data){
     if(data){
       console.log("Logged in");
@@ -82,7 +80,7 @@ function authCheck(req,res,next){
 
 
 app.post('/signup',function(req,res){
-  let usr = new user();
+  var usr = new user();
   bcrypt.hash(req.body.password,saltRounds).then(function(hash){
     usr.password = hash;
     console.log("hash"+hash);
@@ -95,6 +93,21 @@ app.post('/signup',function(req,res){
     });
   });
 });
+
+
+app.post('/product', function(req, res) {
+  var product = product();
+});
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(3000,function(){

@@ -30,7 +30,7 @@
       <!-- list 3 products -->
     </p>
 
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="ProductController">
       <div class="row">
         <!-- <div class="col-md-8" ng-repeat="listing in productList">
           <img ng-src="{{listing.image}}" width="250px" height="200px" alt="training"/>
@@ -46,13 +46,46 @@
       <!-- <li ng-repeat="product in products">
         <a ui-sref="product({id: product.id})"> -->
           <!-- <img ng-src="images/{{product.image_path}}" width="252" height="366"> -->
+
+          <!-- Training Manual item -->
+          <div>
           <img ng-src="/images/dumbbells.jpg" width="250" height="200">
+          <div class="row">
+            <button class="btn btn-primary cart" name="training" ng-click="addToCart('Training Manual'); showTraining=true">Add to cart</button>
+            <button class="btn btn-danger" ng-show="showTraining" ng-click="removeFromCart('Training Manual'); showTraining=false">Remove</button>
+          </div>
+          </div>
+
+          <!-- Men's Meal Plan item -->
+
+          <div>
           <img ng-src="/images/steak.jpg" width="250" height="200">
+          <div class="row">
+            <button class="btn btn-primary cart" name="men" ng-click="addToCart('Mens Meal Plan'); showMen=true">Add to cart</button>
+            <button class="btn btn-danger" ng-show="showMen" ng-click="removeFromCart('Mens Meal Plan'); showMen=false">Remove</button>
+          </div>
+          </div>
+
+          <!-- Women's Meal Plan item -->
+          <div>
           <img ng-src="/images/chicken.jpg" width="250" height="200">
+          <div class="row">
+            <button class="btn btn-primary cart" name="women" ng-click="addToCart('Womens Meal Plan'); showWomen=true">Add to cart</button>
+            <button class="btn btn-danger" ng-show="showWomen" ng-click="removeFromCart('Tr'); showWomen=false">Remove</button>
+          </div>
+          </div>
 
         <!-- </a>
       </li> -->
     </ul>
+
+
+    </div>
+      <div class="row shoppingcart">
+      <button class="btn btn-success shoppingcart"
+      ir-sref="shoppingcart">Shopping Cart</button>
+      <!-- ng-click="shoppingCart()">Shopping Cart</button> -->
+    </div>
 
 
     <!-- <h1>{{this.name}}</h1>
@@ -66,14 +99,14 @@
 
 
       <!-- bottom product section -->
-      <h1>{{product.name}}</h1>
+      <!-- <h1>{{product.name}}</h1>
       <div class="product-description">
         <img style="float: left; margin-right: 10px;" ng-src="images/{{product.image_path}}" width="250" height="200" alt="Product">
         <p>{{ product.description }}</p>
         <p>{{ product.price | currency }}</p>
         <button ng-click="addToCart()">Add to cart</button>
         <span ng-show="addSuccessful">Succesfully added to cart!</span>
-      </div>
+      </div> -->
 
 
   </body>

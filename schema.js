@@ -4,58 +4,13 @@ const user = mongoose.model('user', {
   email: String,
   firstName: String,
   lastName: String,
-  password: String
+  password: String,
+  shopping_cart: ({
+    training_plan: String ,
+    mens_meal_plan: String,
+    womens_meal_plan: String
+  })
 });
-
-// const tweet = mongoose.model('tweet', {
-//   text : String,
-//   timestamp : Date,
-//   username : String
-// });
-
-//world tweet
-// tweet.find().limit(20)
-// .then(function(twt){
-//   console.log(twt.text);
-//   console.log(twt.timestamp);
-//   console.log(twt.username);
-// });
-
-//profile page
-// Promise.all([
-//   user.find({username : Theuname})
-// ])
-// .spread(function(twt,usr){
-//   twt.forEach(function(t){
-//     console.log(t);
-//   });
-//   //number of people you are following
-//   console.log(usr.following.length());
-//   //number of people following you
-//   console.log(usr.followers.length());
-// });
-
-//followers //following
-// user.find({_id : Theuname}).then(function(usr){
-//   user.find({_id : Theuname}).then(function(usr){
-//     usr.following.forEach(function(u){
-//       console.log(u);
-//     });
-//   });
-// });
-
-
-//user timeline
-// user.findById(Theuserid)
-// .then(function(usr){
-//   return tweet.find({
-//     username : {
-//       $in : usr.following.concat([usr._id])
-//     }
-//   });
-// }).then(function(tweets){
-//   console.log(tweets);
-// });
 
 
 
