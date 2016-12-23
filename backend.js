@@ -57,12 +57,13 @@ app.post('/login',function(req,res){
           { $set: { token : token , token_added_on : new Date()} }
       );
       }
-  .then(function(res){
-    res.send(auth_token);
-  })
-  .catch(function(err){
-    res.send("Error"+err.stash);
   });
+  // // .then(function(res){
+  // //   res.send(auth_token);
+  // // })
+  // .catch(function(err){
+  //   res.send("Error"+err.stash);
+  // });
 });
 
 function authCheck(req,res,next){
