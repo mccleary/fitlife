@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Products</title>
+  </head>
+  <body>
+
+    <h3>Shop Our Products</h3>
+    <h1>Welcome to the New You!</h1>
+    <p>
+      We will tell you exactly what to eat, when to eat it and provide you with our Menu Item Substitution List that will allow you to adjust your meals to your tastes. All items can be found at your local grocery store and many items you may already have in your fridge. It’s so simple, failing is NOT an option!
+    </p>
+
+    <div class="bullets">
+
+        <h4><i class="fa fa-apple" aria-hidden="true">
+          Your Personalized “FitLife” Easy to Use Daily Meal Plan
+        </i></h4>
+        <h4><i class="fa fa-cutlery" aria-hidden="true">Menu  Item Substitution Guide for creating your own meals
+        </i></h4>
+        <h4><i class="fa fa-book" aria-hidden="true">Supporting Educational Documentation and Complete Instructions
+        </i></h4>
+        <h4><i class="fa fa-heartbeat" aria-hidden="true">FREE “Cardio Workout” you can do right in the comfort of your own home
+        </i></h4>
+
+    </div>
+
+    <p>
+      <!-- list 3 products -->
+    </p>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <div class="col-md-8" ng-repeat="listing in productList">
+          <img ng-src="{{listing.image}}" width="250px" height="200px" alt="training"/>
+        </div> -->
+
+      </div>
+
+    </div>
+
+
+    <h1>Get Started Today:</h1>
+    <ul class="products">
+      <!-- <li ng-repeat="product in products">
+        <a ui-sref="product({id: product.id})"> -->
+          <!-- <img ng-src="images/{{product.image_path}}" width="252" height="366"> -->
+          <img ng-src="/images/dumbbells.jpg" width="250" height="200">
+          <img ng-src="/images/steak.jpg" width="250" height="200">
+          <img ng-src="/images/chicken.jpg" width="250" height="200">
+
+        <!-- </a>
+      </li> -->
+    </ul>
+
+
+    <!-- <h1>{{this.name}}</h1>
+      <img src="{{thisImg}}"></img>
+      <h3>{{thisDesc}}</h3>
+      <h3>${{thisPrice}}</h3>
+
+      <form class="products" method="post">
+        <button type="button" name="button">Add to Cart</button>
+      </form> -->
+
+
+      <!-- bottom product section -->
+      <h1>{{product.name}}</h1>
+      <div class="product-description">
+        <img style="float: left; margin-right: 10px;" ng-src="images/{{product.image_path}}" width="250" height="200" alt="Product">
+        <p>{{ product.description }}</p>
+        <p>{{ product.price | currency }}</p>
+        <button ng-click="addToCart()">Add to cart</button>
+        <span ng-show="addSuccessful">Succesfully added to cart!</span>
+      </div>
+
+
+  </body>
+</html>

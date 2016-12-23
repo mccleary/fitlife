@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FitLife</title>
+    <script src="angular.js"></script>
+    <script src="angular-cookies.js"></script>
+    <script>
+    var app = angular.module('app', ['ngCookies']);
+    app.controller('Controller', function($cookies, $scope) {
+      $scope.onClick = function() {
+        $cookies.put($scope.key, $scope.value);
+      };
+
+      $scope.onGet = function() {
+        $scope.message = $cookies.get($scope.key2);
+      };
+    });
+    </script>
+  </head>
+  <body ng-app="app" ng-controller="Controller">
+    <input ng-model="key" placeholder="Key">
+    <input ng-model="value" placeholder="Value">
+    <button type="submit" ng-click="onClick()">Set</button>
+    <input ng-model="key2">
+    <button type="submit" ng-click="onGet()">Get</button>
+    <br>
+    {{message}}
+  </body>
+</html>

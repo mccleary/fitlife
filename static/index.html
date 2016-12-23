@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FitLife</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- My stylesheet -->
+    <link href="style.css" rel="stylesheet">
+    <!-- Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Bootstrap js stylesheet -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Script Files -->
+    <script src="angular.js"></script>
+    <script src="angular-cookies.js"></script>
+    <script src="angular-ui-router.js"></script>
+    <!-- custom JS - frontend  -->
+    <script src="frontend.js"></script>
+
+  </head>
+
+  <body ng-app="fitlife">
+
+    <div class="container-fluid">
+        <!-- <nav ng-class="{'nav-bg': noSplash}" class="row clearfix"> -->
+            <div class="nav-container">
+                <div class="left">
+                    <a ui-sref="home">Home</a>
+                    <a ui-sref="about">About</a>
+                    <a ui-sref="product">Product</a>
+                    <a ui-sref="contact">Contact</a>
+                </div>
+
+                <!-- <div class="right">
+                    <p class="name" ng-show="loggedIn">Welcome, {{displayName}}!</p>
+                    <a ui-sref="signup" ng-hide="loggedIn">Sign up</a>
+                    <a ui-sref="login" ng-hide="loggedIn">Log in</a>
+                    <a ui-sref="view_cart" ng-show="loggedIn">View cart</a>
+                    <a ng-click="logout()" ng-show="loggedIn">Log out</a>
+                </div> -->
+            </div>
+        <!-- </nav> -->
+    </div>
+
+    
+
+    <!-- <div class="login">
+      <form ng-submit="logIn()" class="form-inline">
+      <div class="form-group">
+        <label class="sr-only">Email address</label>
+        <input type="email" ng-model="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label class="sr-only">Password</label>
+        <input type="password" ng-model="password" class="form-control" id="password" placeholder="Password">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default">Sign in</button>
+      </form>
+    </div> -->
+
+
+    <!-- <div class="signup">
+    <form ng-submit="click()">
+      <input type="text" ng-model="username" placeholder="Username">
+      <input type="text" ng-model="email" placeholder="email">
+      <input type="text" ng-model="firstName" placeholder="First Name">
+      <input type="text" ng-model="lastName" placeholder="Last Name">
+      <input type="password" ng-model="password" placeholder="Password">
+      <input type="password" ng-model="confirmPassword" placeholder="Confirm Password">
+      <button type="submit" class=>Submit</button>
+    </form>
+    </div> -->
+
+
+    <main ui-view></main>
+
+  </body>
+</html>

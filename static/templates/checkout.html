@@ -1,0 +1,37 @@
+<h1>Checkout Page</h1>
+<!-- shipping address not needed-only email address to send pdf -->
+
+<!--
+<h2>Billing Address</h2>
+<form>
+  <div>
+    <label>Address</label><br>
+    <input type="text" ng-model="address">
+  </div>
+  <div>
+    <label>Address Line 2</label><br>
+    <input type="text" ng-model="address2">
+  </div>
+  <div>
+    <label>City</label><br>
+    <input type="text" ng-model="city">
+  </div>
+  <div>
+    <label>State</label><br>
+    <input type="text" ng-model="state">
+  </div>
+  <div>
+    <label>Zipcode</label><br>
+    <input type="text" ng-model="zipcode">
+  </div>
+</form> -->
+
+
+<h2>Order</h2>
+<ul>
+  <li ng-repeat="item in items">
+    {{item.name}} - {{item.price | currency}}
+  </li>
+</ul>
+Total: {{total | currency}}
+<button ng-click="confirmCheckout()">Confirm Checkout</button>

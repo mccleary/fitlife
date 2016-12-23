@@ -1,0 +1,16 @@
+<h1>I'm the Login </h1>
+
+
+<h1>Login</h1>
+<form ng-submit="login()">
+  <div class="error" ng-show="loginFailed">Login failed.</div>
+  <div>
+    <label>Username</label>
+    <input type="text" ng-model="username">
+  </div>
+  <div>
+    <label>Password</label>
+    <input type="password" ng-model="password">
+  </div>
+  <button>Login</button>
+</form>

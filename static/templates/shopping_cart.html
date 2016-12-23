@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+
+    <h1>Shopping Cart</h1>
+
+
+    <h1>Items in your shopping cart:</h1>
+    <ul>
+      <li ng-repeat="item in items">
+        {{item.name}} - {{item.price | currency}}
+      </li>
+    </ul>
+    Total: {{total | currency}}
+    <button ui-sref="checkout">Checkout</button>
+
+  </body>
+</html>
