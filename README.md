@@ -35,7 +35,8 @@ $ npm install stripe --save
 
 ### Live demo
 
-[Check it out](http://http://54.190.52.82:5000/#/)
+[Check it out](http://54.190.52.82:5000/#/)
+
 
 
 <!-- Screenshots here -->
