@@ -1,4 +1,4 @@
-#Coffee Shop App
+#Fitness eCommerce App
 
 ##Overview
 
@@ -30,7 +30,6 @@ $ npm install my-bcrypt --save
 $ npm install bluebird --save
 $ npm install rand-token --save
 $ npm install body-parser --save
-$ npm install cors --save
 $ npm install stripe --save
 ```
 
