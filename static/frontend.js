@@ -21,10 +21,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'AboutController'
     })
     .state({
-      name: 'product',
-      url: '/product/{id}',
-      templateUrl: 'templates/product.html',
-      controller: 'ProductController'
+      name: 'products',
+      url: '/products/{id}',
+      templateUrl: 'templates/products.html',
+      controller: 'ProductsController'
     })
     .state({
       name: 'contact',
@@ -55,13 +55,13 @@ app.controller('HomeController', function($scope, fitlife) {
     });
 });
 
-app.controller('ProductController', function($scope, fitlife, $stateParams, $state, $cookies) {
-  fitlife.getProduct($stateParams.id)
-    .success(function(product) {
-      $scope.product = product;
+app.controller('ProductsController', function($scope, fitlife, $stateParams, $state, $cookies) {
+  fitlife.getProducts($stateParams.id)
+    .success(function(products) {
+      $scope.products = products;
     });
 
-  $scope.addToCart = function(product) {
+  $scope.addToCart = function(products) {
     fitlife.addToCart($stateParams.id)
       .success(function() {
         console.log('Added to cart');
@@ -138,9 +138,9 @@ app.factory('fitlife', function($http, $rootScope, $cookies) {
   service.getProducts = function() {
     return $http.get('/products');
 };
-  service.getProduct = function() {
-    return $http.get('/product');
-  };
+  // service.getProduct = function() {
+  //   return $http.get('/product');
+  // };
   service.login = function(username, password) {
     return $http.post('/login', {
       username: username,
@@ -151,18 +151,18 @@ app.factory('fitlife', function($http, $rootScope, $cookies) {
       $cookies.putObject('loginData', data);
     });
   };
-  // service.addToCart = function(productId) {
+  // service.addToCart = function(productsId) {
   //   return $http.post('/shopping_cart', {
-  //     product_id: productId,
+  //     products_id: productsId,
   //     auth_token: service.authToken
   //   });
   // };
-  service.addToCart = function(product) {
+  service.addToCart = function(products) {
     var url = '/add_shopping_cart';
     return $http({
       method: 'POST',
       url: url,
-      data: product
+      data: products
     });
   };
   service.getCartItems = function() {

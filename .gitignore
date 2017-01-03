@@ -2,3 +2,4 @@
 .env
 node_modules
 /static/images/*.pdf
+/static/images/*.pages

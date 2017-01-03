@@ -21,10 +21,13 @@
     <script src="angular-ui-router.js"></script>
     <!-- custom JS - frontend  -->
     <script src="frontend.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+
 
   </head>
 
   <body ng-app="fitlife">
+    <div class="jumbotron">
 
     <div class="container-fluid">
         <!-- <nav ng-class="{'nav-bg': noSplash}" class="row clearfix"> -->
@@ -32,7 +35,7 @@
                 <div class="left">
                     <a ui-sref="home">Home</a>
                     <a ui-sref="about">About</a>
-                    <a ui-sref="product">Product</a>
+                    <a ui-sref="products">Products</a>
                     <a ui-sref="contact">Contact</a>
                 </div>
 
@@ -45,9 +48,10 @@
                 </div> -->
             </div>
         <!-- </nav> -->
+      </div>
     </div>
 
-    
+
 
     <!-- <div class="login">
       <form ng-submit="logIn()" class="form-inline">
