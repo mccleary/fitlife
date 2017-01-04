@@ -23,70 +23,54 @@
     <script src="frontend.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
-
   </head>
 
-  <body ng-app="fitlife">
-    <div class="jumbotron">
-
+  <body ng-app="fitlife" ng-controller="MainController">
     <div class="container-fluid">
-        <!-- <nav ng-class="{'nav-bg': noSplash}" class="row clearfix"> -->
-            <div class="nav-container">
-                <div class="left">
-                    <a ui-sref="home">Home</a>
-                    <a ui-sref="about">About</a>
-                    <a ui-sref="products">Products</a>
-                    <a ui-sref="contact">Contact</a>
-                </div>
+      <div class="row" id="logo-bar">
+        <div class="col col-md-2">
+          <img src="images/apple.png" height="150px" width="150px">
+        </div>
+        <div class="col col-md-10">
+          <button type="button" name="button" class="btn pull-right" ng-click="logout()">Logout</button>
+          <a href="#login"><button type="button" name="button" class="btn pull-right" ng-hide="checkIfLoggedIn()">Login</button></a>
+          <a href="#register"><button type="button" name="button" class="btn pull-right" ng-hide="checkIfLoggedIn()">Register</button></a>
+        </div>
+        <div class="row" id="nav">
+          <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a ui-sref="home">Home</a></li>
+            <li role="presentation"><a ui-sref="about">About</a></li>
+            <li role="presentation"><a ui-sref="products">Products</a></li>
+            <li role="presentation"><a ui-sref="shopping_cart">Shopping Cart</a></li>
+            <li role="presentation"><a ui-sref="contact">Contact</a></li>
+            <!-- <li role="presentation"><a ui-sref="delivery">Delivery</a></li> -->
+            <!-- <li role="presentation"><a ui-sref="payment">Payment</a></li> -->
+          </ul>
+        </div>
+        <!-- only use #home for single page site, otherwise use "home" -->
 
-                <!-- <div class="right">
-                    <p class="name" ng-show="loggedIn">Welcome, {{displayName}}!</p>
-                    <a ui-sref="signup" ng-hide="loggedIn">Sign up</a>
-                    <a ui-sref="login" ng-hide="loggedIn">Log in</a>
-                    <a ui-sref="view_cart" ng-show="loggedIn">View cart</a>
-                    <a ng-click="logout()" ng-show="loggedIn">Log out</a>
-                </div> -->
-            </div>
         <!-- </nav> -->
       </div>
     </div>
 
 
 
-    <!-- <div class="login">
-      <form ng-submit="logIn()" class="form-inline">
-      <div class="form-group">
-        <label class="sr-only">Email address</label>
-        <input type="email" ng-model="email" class="form-control" id="email" placeholder="Email">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Password</label>
-        <input type="password" ng-model="password" class="form-control" id="password" placeholder="Password">
-      </div>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Remember me
-        </label>
-      </div>
-      <button type="submit" class="btn btn-default">Sign in</button>
-      </form>
-    </div> -->
 
-
-    <!-- <div class="signup">
-    <form ng-submit="click()">
-      <input type="text" ng-model="username" placeholder="Username">
-      <input type="text" ng-model="email" placeholder="email">
-      <input type="text" ng-model="firstName" placeholder="First Name">
-      <input type="text" ng-model="lastName" placeholder="Last Name">
-      <input type="password" ng-model="password" placeholder="Password">
-      <input type="password" ng-model="confirmPassword" placeholder="Confirm Password">
-      <button type="submit" class=>Submit</button>
-    </form>
-    </div> -->
 
 
     <main ui-view></main>
+
+  <footer class="source-org copyright footer">
+    <div class="container">
+      <p>Copyright 2016  Made with <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+        <i class="fa fa-chevron-right" aria-hidden="true"></i> &amp;
+        <i class="fa fa-music" aria-hidden="true"></i>
+      </p>
+    </div>
+  </footer>
+
+
 
   </body>
 </html>

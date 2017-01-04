@@ -1,20 +1,144 @@
-const user = mongoose.model('user', {
+// connection client for mongodb
+var mongoose = require('mongoose');
+var bluebird = require('bluebird');
+var Schema = mongoose.Schema;
+//assign bluebird to promise
+var Promise = bluebird;
+mongoose.Promise = bluebird;
+mongoose.connect('mongodb://localhost/fitlife');
+
+const user = new Schema({
   _id : String,
-  username: String,
-  email: String,
-  firstName: String,
-  lastName: String,
-  password: String,
-  shopping_cart: ({
-    training_plan: String ,
-    mens_meal_plan: String,
-    womens_meal_plan: String
-  })
+  username : String,
+  email : String,
+  firstName : String,
+  lastName : String,
+  password : String,
+  token : String,
+  token_added_on : Date,
+  shopping_cart : Array
 });
 
+const products = new Schema({
+  _id : String,
+  name : String,
+  file_url : String,
+  image_url : String,
+  price : Number,
+  gender : String,
+  height : Number,
+  weight : Number
+});
+
+// var Module = {
+//   User: mongoose.model('user', user),
+//   Products : mongoose.model('products', products)};
+// }
+//
+// export Default Module;
+
+// training_plan: String ,
+// mens_meal_plan: String,
+// womens_meal_plan: String
+
+// ************************** //
+// add additional info to db
+// db.users.insert({
+//   token : String,
+//   token_added_on : Date,
+//   shopping_cart : Array
+// });
+//
+// db.products.insert(product)
+//
+// var product = new product ({
+//   _id : String,
+//   name : String,
+//   file_url : String,
+//   image_url : String,
+//   price : Number,
+//   gender : String,
+//   height : Number,
+//   weight : Number
+// })
+
+// db.products.insert({
+//   name : Training Plan,
+//   file_url : trainingplan.pdf,
+//   image_url : trainingplan.jpg,
+//   price : 60.00,
+// })
+// var trainingplan({
+//   name : Training Plan,
+//   file_url : trainingplan.pdf,
+//   image_url : trainingplan.jpg,
+//   price : 60.00,
+// })
+// db.products.insert(product)
+//
+// var mens_meal_plan1({
+//   name : Mens Meal Plan,
+//   file_url : mens_meal_plan1.pdf,
+//   image_url : mens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Men,
+//   height : { $lt : 63 },
+//   weight : { $lt : 145 }
+// })
+//
+// var mens_meal_plan2({
+//   name : Mens Meal Plan,
+//   file_url : mens_meal_plan2.pdf,
+//   image_url : mens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Men,
+//   height : { $gt : 64, $lt : 71 },
+//   weight : { $gt : 146, $lt : 199 }
+// })
+//
+// var mens_meal_plan3({
+//   name : Mens Meal Plan,
+//   file_url : mens_meal_plan3.pdf,
+//   image_url : mens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Men,
+//   height : { $ gt : 72 },
+//   weight : { $gt : 200 }
+// })
+//
+// var womens_meal_plan1({
+//   name : Womens Meal Plan,
+//   file_url : womens_meal_plan1.pdf,
+//   image_url : womens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Women,
+//   height : { $lt : 63 },
+//   weight : { $lt : 145 }
+// })
+//
+// var womens_meal_plan2({
+//   name : Womens Meal Plan,
+//   file_url : womens_meal_plan2.pdf,
+//   image_url : womens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Women,
+//   height : { $gt : 64, $lt : 71 },
+//   weight : { $gt : 146, $lt : 199 }
+// })
+//
+// var womens_meal_plan3({
+//   name : Womens Meal Plan,
+//   file_url : womens_meal_plan3.pdf,
+//   image_url : womens_meal_plan.jpg,
+//   price : 60.00,
+//   gender : Women,
+//   height : { $ gt : 72 },
+//   weight : { $gt : 200 }
+// })
 
 
 
+// ************************** //
 
 // database info:
 
@@ -35,7 +159,6 @@ const user = mongoose.model('user', {
 // };
 
 // db.users.insert(user)
-
 
 
 // db.users.insert({

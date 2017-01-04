@@ -5,18 +5,21 @@
     <title>Shopping Cart</title>
   </head>
   <body>
+    <div ng-controller="productsController" ng-init = "getCart()">
 
     <h1>Shopping Cart</h1>
 
 
     <h1>Items in your shopping cart:</h1>
     <ul>
-      <li ng-repeat="product in products">
-        {{product.name}} - {{product.price | currency}}
+      <li ng-repeat="item in itemsArray">
+        {{item}} - $60
       </li>
     </ul>
-    Total: {{total | currency}}
-    <button ui-sref="checkout">Checkout</button>
+    <!-- Total: {{total | currency}} -->
+    Total: $120
+    <button ng-click="pay()">Checkout</button>
+  </div>
 
   </body>
 </html>

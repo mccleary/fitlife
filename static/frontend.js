@@ -1,190 +1,284 @@
 var app = angular.module('fitlife', ['ui.router', 'ngCookies']);
 
+
+var order = {
+  products: {},
+  address: {}
+};
+
+var totalPrice;
+
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state({
-      name: 'login',
-      url: '/login',
-      templateUrl: 'templates/login.html',
-      controller: 'LoginController'
-    })
-    .state({
-      name: 'home',
-      url: '/',
-      templateUrl: 'templates/home.html',
-      controller: 'HomeController'
-    })
-    .state({
-      name: 'about',
-      url: '/about',
-      templateUrl: 'templates/about.html',
-      controller: 'AboutController'
-    })
-    .state({
-      name: 'products',
-      url: '/products/{id}',
-      templateUrl: 'templates/products.html',
-      controller: 'ProductsController'
-    })
-    .state({
-      name: 'contact',
-      url: '/contact',
-      templateUrl: 'templates/contact.html',
-      controller: 'ContactController'
-    })
-    .state({
-      name: 'shopping_cart',
-      url: '/shopping_cart',
-      templateUrl: 'templates/shopping_cart.html',
-      controller: 'ShoppingCartController'
-    })
-    .state({
-      name: 'checkout',
-      url: '/checkout',
-      templateUrl: 'templates/checkout.html',
-      controller: 'CheckoutController'
-    })
-    ;
+  .state({
+    name: 'home',
+    url: '/',
+    templateUrl: 'templates/home.html',
+    controller: 'MainController'
+  })
+
+  .state({
+        name: 'about',
+        url: '/about',
+        templateUrl: 'templates/about.html'
+        // controller: 'AboutController'
+  })
+
+  .state({
+    name: 'contact',
+    url: '/contact',
+    templateUrl: 'templates/contact.html'
+    // controller: 'ContactController'
+  })
+
+  // .state('products', {
+  //   url: '/products',
+  //   templateUrl: 'templates/products.html',
+  //   controller: 'productsController'
+  // })
+
+  .state({
+    name: 'products',
+    url: '/products',
+    templateUrl: 'templates/products.html',
+    controller: 'productsController'
+  })
+
+  .state({
+    name: 'shopping_cart',
+    url: '/shopping_cart',
+    templateUrl: 'templates/shopping_cart.html',
+    controller: 'productsController'
+  })
+
+  .state('/payment', {
+    templateUrl: 'payment.html',
+    controller: 'productsController'
+  })
+
+  .state('/thanks', {
+    templateUrl: 'thanks.html',
+    controller: 'productsController'
+  })
+
+  .state('/login', {
+    templateUrl: 'login.html',
+    controller: 'LoginController'
+  })
+
+  .state('/register', {
+    templateUrl: 'register.html',
+    controller: 'RegisterController'
+  });
+
   $urlRouterProvider.otherwise('/');
 });
 
-app.controller('HomeController', function($scope, fitlife) {
-  fitlife.getProducts()
-    .success(function(products) {
-      $scope.products = products;
-    });
+app.controller('MainController', function($scope, $cookies, $location) {
+  $scope.logout = function() {
+    $cookies.remove("token");
+    $location.path('/home');
+  };
+  $scope.checkIfLoggedIn = checkIfLoggedIn;
+  function checkIfLoggedIn() {
+      return $cookies.get('token');
+  }
 });
 
-app.controller('ProductsController', function($scope, fitlife, $stateParams, $state, $cookies) {
-  fitlife.getProducts($stateParams.id)
-    .success(function(products) {
-      $scope.products = products;
-    });
+//products delivery and payment controller
+app.controller('productsController', function($scope, $location, postOrder, $cookies, $http) {
+  // checkIfLoggedIn();
+  $scope.order = order;
+  // $scope.token = $cookies.get('token');
+  // $scope.makeOrder = function(qty, total) {
+  //   totalPrice = total * 20 * 100;
+  //   console.log(totalPrice);
+  //   order.products = {
+  //     qty: qty,
+  //
+  //   };
+  //   $location.path('/delivery');
 
-  $scope.addToCart = function(products) {
-    fitlife.addToCart($stateParams.id)
-      .success(function() {
-        console.log('Added to cart');
-        $scope.addSuccessful = true;
-      });
-    // var oldCart = $cookies.get('cart');
-		// if(oldCart === undefined){
-		// 	var newCart = name;
-		// }else{
-		// 	$scope.newCart = oldCart + ',' + name;
-		// }
-    // $cookies.put('cart', name);
+  // };
+  $scope.addToCart = function(name){
+    var oldCart = $cookies.get('cart');
+    if(oldCart == undefined){
+      var newCart = name;
+    } else {
+      var newCart = oldCart + ',' + name;
+    }
+    $cookies.put('cart', newCart)
+  };
+  $scope.removeFromCart = function(name){
+    var cart = $cookies.get('cart');
+    var values = cart.split(',');
+    for(var i = 0; i < values.length; i++){
+      if(values[i] == name){
+        values.splice(i, 1);
+        var newCart = values.join(',');
+      }
+    }
+    $cookies.put('cart', newCart);
   };
 
-});
-
-app.controller('LoginController', function($scope, fitlife, $state) {
-  $scope.login = function() {
-    fitlife.login($scope.username, $scope.password)
-      .success(function(data) {
-        console.log('login success', data);
-        $state.go('home');
-      })
-      .error(function() {
-        console.log(data);
-        console.log('Login error');
-        $scope.loginFailed = true;
-      });
+  $scope.getCart = function(){
+    var cart = $cookies.get('cart');
+    $scope.itemsArray = cart.split(',');
+    console.log('cart', cart);
   };
-});
 
-app.controller('ShoppingCartController', function($scope, fitlife) {
-  fitlife.getCartItems()
-    .then(function(results) {
-      $scope.items = results.items;
-      $scope.total = results.total;
-    });
-});
-
-app.controller('CheckoutController', function($scope, fitlife) {
-  fitlife.getCartItems()
-    .then(function(results) {
-      $scope.items = results.items;
-      $scope.total = results.total;
-    });
-  $scope.confirmCheckout = function() {
-    var address = {
-      address: $scope.address,
+  $scope.deliverySubmit = function() {
+    order.address = {
+      name: $scope.fullName,
+      address1: $scope.address1,
       address2: $scope.address2,
       city: $scope.city,
       state: $scope.state,
-      zipcode: $scope.zipcode
+      zipCode: $scope.zipCode,
+      deliveryDate: $scope.deliveryDate
     };
-    fitlife.checkout(address)
-      .success(function(data) {
-        console.log('It worked');
-      });
+    $location.path('/payment');
+  };
+
+  $scope.checkIfLoggedIn = checkIfLoggedIn;
+  function checkIfLoggedIn() {
+    if($cookies.get('token')) {
+        return true;
+    } else {
+      $location.path("/login");
+    }
+  } //checkIfLoggedIn end
+
+  // $scope.logout = function() {
+  //   $cookies.remove("token");
+  //   console.log('you clicked logout');
+  //   $location.path('/home');
+  // };
+  $scope.pay = function() {
+    // Creates a CC handler which could be reused.
+    var amount = 12000;
+    console.log(amount);
+    var handler = StripeCheckout.configure({
+      // my testing public publishable key
+      key: 'pk_test_0kQI0g7I8UCnwKKtkKZ55I8t',
+      locale: 'auto',
+      // once the credit card is validated, this function will be called
+      token: function(token) {
+        // Make the request to the backend to actually make a charge
+        // This is the token representing the validated credit card
+        var tokenId = token.id;
+        $http({
+          url: url,
+          method: 'POST',
+          data: {
+            amount: amount,
+            token: tokenId
+          }
+        }).success(function(data) {
+          console.log('Charge:', data);
+          console.log(tokenId);
+          function payOrder(tokenId) {
+            postOrder.submit(tokenId);
+            console.log('payment made');
+            $location.path('/');
+          }
+          payOrder(tokenId);
+          alert('You were charged $' + (data.charge.amount / 100));
+        });
+      }
+    });
+    // open the handler - this will open a dialog
+    // with a form with it to prompt for credit card
+    // information from the user
+    handler.open({
+      name: 'FitLife',
+      description: 'test CC#: 4242 4242 4242 4242',
+      amount: amount
+    });
+  };
+}); //end of products controller
+
+//register user
+app.controller('RegisterController', function($scope, postUser, $location) {
+    $scope.submitUser = function() {
+      var user = {
+        username: $scope.username,
+        password: $scope.password
+      };
+      postUser.saveUserInfo(user);
+      $location.path("/home");
+    };
+});
+
+// login user
+app.controller('LoginController', function($scope, postLogin, $location, $cookies) {
+  $scope.login = function() {
+    var user = {
+      username: $scope.loginName,
+      password: $scope.loginPassword
+    };
+    postLogin.loginUser(user)
+      .success(function(data, status) {
+      $cookies.put('token', data.token);
+      if(data.status === "ok") {
+        $location.path('/home');
+      } else {
+        alert("invaild username or password");
+      }
+      console.log(data, status);
+    });
   };
 });
 
-app.factory('fitlife', function($http, $rootScope, $cookies) {
-  var service = {};
-  var loginData = $cookies.getObject('loginData');
-  if (loginData) {
-    service.authToken = loginData.auth_token;
-    $rootScope.user = loginData.user;
-  }
-  $rootScope.logout = function() {
-    $rootScope.user = null;
-    $cookies.remove('loginData');
-    service.authToken = null;
+// get product products
+app.factory('product', function($http) {
+  return {
+    getProductproducts: function(callback) {
+      $http({
+        url: url
+      }).success(function(data) {
+        callback(data);
+      });
+    }
   };
+});
 
-  service.getProducts = function() {
-    return $http.get('/products');
-};
-  // service.getProduct = function() {
-  //   return $http.get('/product');
-  // };
-  service.login = function(username, password) {
-    return $http.post('/login', {
-      username: username,
-      password: password
-    }).success(function(data) {
-      service.authToken = data.auth_token;
-      $rootScope.user = data.user;
-      $cookies.putObject('loginData', data);
-    });
-  };
-  // service.addToCart = function(productsId) {
-  //   return $http.post('/shopping_cart', {
-  //     products_id: productsId,
-  //     auth_token: service.authToken
-  //   });
-  // };
-  service.addToCart = function(products) {
-    var url = '/add_shopping_cart';
-    return $http({
-      method: 'POST',
-      url: url,
-      data: products
-    });
-  };
-  service.getCartItems = function() {
-    return $http({
-      method: 'GET',
-      url: '/shopping_cart',
-      params: { auth_token: service.authToken }
-    }).then(function(response) {
-      var items = response.data;
-      var total = items.reduce(function(total, item) {
-        return total + item.price;
-      }, 0);
-      return {
-        items: items,
-        total: total
+// post order to database
+app.factory('postOrder', function($http, $cookies) {
+  return {
+    submit: function(tokenId) {
+      var data = {
+        token: $cookies.get('token'),
+        order: order,
+        stripeToken: tokenId
       };
-    });
+      console.log('data from post order factory', data);
+      $http.post(url, data)
+        .success(function(data, status) {
+          console.log('data: ', data);
+          console.log('status code: ', status);
+      });
+    }
   };
+});
 
-  service.checkout = function(address) {
-    address.auth_token = service.authToken;
-    return $http.post('/shopping_cart/checkout', address);
+// user signup
+app.factory('postUser', function($http) {
+  return {
+    saveUserInfo: function(user) {
+      $http.post(url, user)
+      .success(function(data, status) {
+        console.log('data', data);
+        console.log('status code: ', status);
+      });
+    }
   };
-  return service;
+});
+
+app.factory('postLogin', function($http, $cookies) {
+  return {
+    loginUser: function(user) {
+      return $http.post(url, user);
+    }
+  };
 });
