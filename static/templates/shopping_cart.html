@@ -11,13 +11,16 @@
 
 
     <h1>Items in your shopping cart:</h1>
+    {{itemsArray}}
     <ul>
-      <li ng-repeat="item in itemsArray">
-        {{item}} - $60
+      <li ng-repeat="name in itemsArray">
+        {{name}} - $60.00
+        <input type="radio" ng-model="my.favorite" ng-value="name" id="{{name}}" name="favorite">
       </li>
+      <li><button class="btn btn-danger removeItemFromCart" ng-click="removeItemFromCart('{{my.favorite}}')">Delete From Cart</button></li>
+
     </ul>
-    <!-- Total: {{total | currency}} -->
-    Total: $120
+    Total: {{total  | currency}}
     <button ng-click="pay()">Checkout</button>
   </div>
 

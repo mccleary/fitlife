@@ -18,11 +18,11 @@ var bluebird = require('bluebird');
 // Number of Salt Rounds
 var saltRounds = 12;
 // Generate rand-token
-var uid = require('rand-token').uid;
+// var uid = require('rand-token').uid;
 // Stripe Payment Processing
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-var randToken = require('rand-token');
+var randToken = require('rand-token').uid;
 
 var tokenobj = {};
 

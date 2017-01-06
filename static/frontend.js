@@ -51,23 +51,31 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'productsController'
   })
 
-  .state('/payment', {
-    templateUrl: 'payment.html',
+  .state({
+    name: 'payment',
+    url: '/payment',
+    templateUrl: 'templates/payment.html',
     controller: 'productsController'
   })
 
-  .state('/thanks', {
-    templateUrl: 'thanks.html',
+  .state({
+    name: 'thankyou',
+    url: '/thankyou',
+    templateUrl: 'templates/thankyou.html',
     controller: 'productsController'
   })
 
-  .state('/login', {
-    templateUrl: 'login.html',
+  .state({
+    name: 'login',
+    url: '/login',
+    templateUrl: 'templates/login.html',
     controller: 'LoginController'
   })
 
-  .state('/register', {
-    templateUrl: 'register.html',
+  .state({
+    name: 'register',
+    url: '/register',
+    templateUrl: 'templates/register.html',
     controller: 'RegisterController'
   });
 
@@ -88,10 +96,12 @@ app.controller('MainController', function($scope, $cookies, $location) {
 //products delivery and payment controller
 app.controller('productsController', function($scope, $location, postOrder, $cookies, $http) {
   // checkIfLoggedIn();
+  $scope.names = ['Training Manual', 'Mens Meal Plan', 'Womens Meal Plan'];
+    $scope.my = { favorite: '' };
   $scope.order = order;
   // $scope.token = $cookies.get('token');
   // $scope.makeOrder = function(qty, total) {
-  //   totalPrice = total * 20 * 100;
+  //   totalPrice = total * qty * 100;
   //   console.log(totalPrice);
   //   order.products = {
   //     qty: qty,
@@ -121,10 +131,31 @@ app.controller('productsController', function($scope, $location, postOrder, $coo
     $cookies.put('cart', newCart);
   };
 
+  $scope.removeItemFromCart = function() {
+    	var name = $scope.my.favorite
+    	console.log(name);
+		var cart = $cookies.get('cart');
+	  	var values = cart.split(',');
+	  	for(var i = 0; i < values.length; i++) {
+	    	if(values[i] == name) {
+	      	values.splice(i, 1);
+	      	var newCart = values.join(',');
+	    	}
+	  	}
+	  	$cookies.put('cart', newCart)
+	  	$scope.getCart()
+	};
+
+
   $scope.getCart = function(){
     var cart = $cookies.get('cart');
-    $scope.itemsArray = cart.split(',');
+    var itemsArray = cart.split(',').filter(function(item) {
+      return item != ''});
+    $scope.itemsArray = itemsArray;
     console.log('cart', cart);
+    $scope.qty = itemsArray.length;
+    $scope.total = itemsArray.length * 60;
+    console.log($scope.total);
   };
 
   $scope.deliverySubmit = function() {
@@ -168,7 +199,7 @@ app.controller('productsController', function($scope, $location, postOrder, $coo
         // This is the token representing the validated credit card
         var tokenId = token.id;
         $http({
-          url: url,
+          url: ('/charge'),
           method: 'POST',
           data: {
             amount: amount,
@@ -180,10 +211,11 @@ app.controller('productsController', function($scope, $location, postOrder, $coo
           function payOrder(tokenId) {
             postOrder.submit(tokenId);
             console.log('payment made');
-            $location.path('/');
+            $location.path('/thankyou');
+            $cookies.remove('cart');
           }
           payOrder(tokenId);
-          alert('You were charged $' + (data.charge.amount / 100));
+          // alert('You were charged $' + (data.charge.amount / 100));
         });
       }
     });
@@ -196,7 +228,8 @@ app.controller('productsController', function($scope, $location, postOrder, $coo
       amount: amount
     });
   };
-}); //end of products controller
+});
+//end of products controller
 
 //register user
 app.controller('RegisterController', function($scope, postUser, $location) {
@@ -253,7 +286,7 @@ app.factory('postOrder', function($http, $cookies) {
         stripeToken: tokenId
       };
       console.log('data from post order factory', data);
-      $http.post(url, data)
+      $http.post('/charge', data)
         .success(function(data, status) {
           console.log('data: ', data);
           console.log('status code: ', status);

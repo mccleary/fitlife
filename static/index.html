@@ -22,27 +22,32 @@
     <!-- custom JS - frontend  -->
     <script src="frontend.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
-
   </head>
 
   <body ng-app="fitlife" ng-controller="MainController">
     <div class="container-fluid">
       <div class="row" id="logo-bar">
-        <div class="col col-md-2">
+        <!-- <div class="col col-md-2">
           <img src="images/apple.png" height="150px" width="150px">
+        </div> -->
+
+        <!-- Login, Logout, Register buttons -->
+        <div class="col col-md-12">
+          <a href="#/"><img src="images/apple.png" height="150px" width="150px" alt="FitLife" /></a>
+          <a href="#/login"><button type="submit" class="btn userBtns" ng-show="userButton">Login</button></a>
+          <a href="#/signup"><button type="submit" class="btn userBtns" ng-show="userButton">New User?</button></a>
+          <!-- <h2 class="userBtns">Welcome, {{user}}!</h2> -->
+          <a><button ng-click="logout()" type="submit" class="btn userBtns" ng-hide="userButton">Logout</button></a>
         </div>
-        <div class="col col-md-10">
-          <button type="button" name="button" class="btn pull-right" ng-click="logout()">Logout</button>
-          <a href="#login"><button type="button" name="button" class="btn pull-right" ng-hide="checkIfLoggedIn()">Login</button></a>
-          <a href="#register"><button type="button" name="button" class="btn pull-right" ng-hide="checkIfLoggedIn()">Register</button></a>
-        </div>
+
+        <!-- Navigation Section -->
         <div class="row" id="nav">
           <ul class="nav nav-tabs nav-justified">
             <li role="presentation"><a ui-sref="home">Home</a></li>
             <li role="presentation"><a ui-sref="about">About</a></li>
             <li role="presentation"><a ui-sref="products">Products</a></li>
-            <li role="presentation"><a ui-sref="shopping_cart">Shopping Cart</a></li>
             <li role="presentation"><a ui-sref="contact">Contact</a></li>
+            <li role="presentation"><a ui-sref="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i></a></li>
             <!-- <li role="presentation"><a ui-sref="delivery">Delivery</a></li> -->
             <!-- <li role="presentation"><a ui-sref="payment">Payment</a></li> -->
           </ul>
@@ -60,11 +65,13 @@
 
     <main ui-view></main>
 
-  <footer class="source-org copyright footer">
+  <footer class="source-org copyright footer text-center">
     <div class="container">
-      <p>Copyright 2016  Made with <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      <a href="#/"><img src="images/apple.png" height="50px" width="50px" alt="FitLife" /></a>
+      <br>
+      <p>Copyright  ©2017  Made with
         <i class="fa fa-heart" aria-hidden="true"></i>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i> &amp;
+         &amp;
         <i class="fa fa-music" aria-hidden="true"></i>
       </p>
     </div>

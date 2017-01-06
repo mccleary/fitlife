@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Products</title>
-  </head>
-  <body>
+<div class="container-fluid">
 
-    <h3>Shop Our Products</h3>
+    <!-- <h3>Shop Our Products</h3> -->
     <h1>Welcome to the New You!</h1>
     <p>
       We will tell you exactly what to eat, when to eat it and provide you with our Menu Item Substitution List that will allow you to adjust your meals to your tastes. All items can be found at your local grocery store and many items you may already have in your fridge. It’s so simple, failing is NOT an option!
@@ -15,13 +9,13 @@
     <div class="bullets">
 
         <h4><i class="fa fa-apple" aria-hidden="true">
-          Your Personalized “FitLife” Easy to Use Daily Meal Plan
+           Your Personalized “FitLife” Easy to Use Daily Meal Plan
         </i></h4>
-        <h4><i class="fa fa-cutlery" aria-hidden="true">Menu  Item Substitution Guide for creating your own meals
+        <h4><i class="fa fa-cutlery" aria-hidden="true">  Menu  Item Substitution Guide for creating your own meals
         </i></h4>
-        <h4><i class="fa fa-book" aria-hidden="true">Supporting Educational Documentation and Complete Instructions
+        <h4><i class="fa fa-book" aria-hidden="true">  Supporting Educational Documentation and Complete Instructions
         </i></h4>
-        <h4><i class="fa fa-heartbeat" aria-hidden="true">FREE “Cardio Workout” you can do right in the comfort of your own home
+        <h4><i class="fa fa-heartbeat" aria-hidden="true">  FREE “Cardio Workout” you can do right in the comfort of your own home
         </i></h4>
 
     </div>
@@ -30,26 +24,30 @@
       <!-- list 3 products -->
     </p>
 
-    <div class="container-fluid" ng-controller="productsController">
-      <div class="row">
+    <!-- <div class="container-fluid" ng-controller="productsController">
+      <div class="row"> -->
         <!-- <div class="col-md-8" ng-repeat="listing in productList">
           <img ng-src="{{listing.image}}" width="250px" height="200px" alt="training"/>
         </div> -->
+      <!-- </div>
+    </div> -->
 
-      </div>
+    <div class="container-fluid" ng-controller="productsController">
+      <h1 class="optionsHeader">Get Started Today!</h1>
+      <div class="row packages">
+        <div class="col col-md-2"></div>
 
-    </div>
-
-
-    <h1>Get Started Today:</h1>
-    <ul class="products">
+      <!-- <ul class="products"> -->
       <!-- <li ng-repeat="product in products">
         <a ui-sref="product({id: product.id})"> -->
           <!-- <img ng-src="images/{{product.image_path}}" width="252" height="366"> -->
 
           <!-- Training Manual item -->
-          <div>
-          <img ng-src="/images/dumbbells.jpg" width="250" height="200">
+          <div class="col col-md-4 individual">
+            <div class="options">
+              <h3>FitLife Training and Meal Plans</h3><br>
+              <h5>Get in shape and feel better </h5><br>
+              <img ng-src="/images/dumbbells.jpg" width="250" height="200"><br>
           <!-- <div class="dropdown open">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Select Height
@@ -61,43 +59,68 @@
             </div>
           </div> -->
 
-          <div class="row">
-            <button class="btn btn-primary cart" name="training" ng-click="addToCart('Training Manual'); showTraining=true">Add to cart</button>
-            <button class="btn btn-danger" ng-show="showTraining" ng-click="removeFromCart('Training Manual'); showTraining=false">Remove</button>
-          </div>
+              <div class="row">
+                <h3>Weekly Training Plan</h3>
+                <h5>Product Description:</h5>
+                <p>This full body, Weekly Training Guide will help you to maximize your results at home. Simple, easy to follow guide is perfect for Beginners to Advanced users.</p>
+
+                <p>A pair of Dumbbells and a Step Box (or similar) is all you will need. Combine this guide with your “The Meaning of Clean Eating” easy to use Meal Guide to supercharge your results. A few minutes a day is all it takes for you to get moving in the right direction.</p>
+
+                <p>**Upon purchase completion of your order, you will receive an email containing the link for your download within 24 hours via the email address provided at checkout (no items will be mailed)</p>
+                <button class="btn btn-primary cart" name="training" ng-click="addToCart('Training Manual'); showTraining=true">Add to cart</button>
+                <button class="btn btn-danger" ng-show="showTraining" ng-click="removeFromCart('Training Manual'); showTraining=false">Remove</button>
+              </div>
           </div>
 
           <!-- Men's Meal Plan item -->
 
-          <div>
-          <img ng-src="/images/steak.jpg" width="250" height="200">
-          <div class="row">
-            <button class="btn btn-primary cart" name="men" ng-click="addToCart('Mens Meal Plan'); showMen=true">Add to cart</button>
-            <button class="btn btn-danger" ng-show="showMen" ng-click="removeFromCart('Mens Meal Plan'); showMen=false">Remove</button>
-          </div>
+          <div class="col col-md-4 individual">
+            <div class="options">
+            <img ng-src="/images/steak.jpg" width="250" height="200">
+            <div class="row">
+              <h3>Men’s Daily Meal Plan</h3>
+              <h5>Product Description:</h5>
+              <p>Easy to Use -Your first and most important step to making the change you’ve always wanted to make!</p>
+
+              <p>Step-by-Step, easy to use detailed program that makes eating healthy a breeze. You do not have to give up all of the great tasting foods that you love. Our plan is a complete outline, from Breakfast to Dinner, designed specifically for you and your body’s needs. Protein, Carbs, Fats and Sugars, as well as your daily after intake, are all a part of our comprehensive program. No Guesswork! Just follow the guide to a better and more relaxed you!</p>
+
+              <p>**Upon purchase completion of your order, you will receive an email containing the link for your download within 24 hours via the email address provided at checkout (no items will be mailed)</p>
+
+              <button class="btn btn-primary cart" name="men" ng-click="addToCart('Mens Meal Plan'); showMen=true">Add to cart</button>
+              <button class="btn btn-danger" ng-show="showMen" ng-click="removeFromCart('Mens Meal Plan'); showMen=false">Remove</button>
+            </div>
           </div>
 
           <!-- Women's Meal Plan item -->
-          <div>
-          <img ng-src="/images/chicken.jpg" width="250" height="200">
-          <div class="row">
-            <button class="btn btn-primary cart" name="women" ng-click="addToCart('Womens Meal Plan'); showWomen=true">Add to cart</button>
-            <button class="btn btn-danger" ng-show="showWomen" ng-click="removeFromCart('Tr'); showWomen=false">Remove</button>
-          </div>
+          <div class="col col-md-4 individual">
+            <div class="options">
+              <img ng-src="/images/chicken.jpg" width="250" height="200">
+              <div class="row">
+                <h3>Women’s Daily Meal Plan</h3>
+                <h5>Product Description:</h5>
+                <p>Easy to Use -Your first and most important step to making the change you’ve always wanted to make!</p>
+
+                <p>Step-by-Step, easy to use detailed program that makes eating healthy a breeze. You do not have to give up all of the great tasting foods that you love. Our plan is a complete outline, from Breakfast to Dinner, designed specifically for you and your body’s needs. Protein, Carbs, Fats and Sugars, as well as your daily after intake, are all a part of our comprehensive program. No Guesswork! Just follow the guide to a better and more relaxed you!</p>
+
+                <p>**Upon purchase completion of your order, you will receive an email containing the link for your download within 24 hours via the email address provided at checkout (no items will be mailed)</p>
+
+                <button class="btn btn-primary cart" name="women" ng-click="addToCart('Womens Meal Plan'); showWomen=true">Add to cart</button>
+                <button class="btn btn-danger" ng-show="showWomen" ng-click="removeFromCart('Womens Meal Plan'); showWomen=false">Remove</button>
+              </div>
           </div>
 
         <!-- </a>
       </li> -->
-    </ul>
-
+    <!-- </ul> -->
 
     </div>
       <div class="row shoppingcart">
-      <button class="btn btn-success shoppingcart"
-      ir-sref="shoppingcart">Shopping Cart</button>
+        <a href="#/shopping_cart">
+      <button class="btn btn-success shoppingcart" type="submit">
+      Shopping Cart</button></a>
       <!-- ng-click="shoppingCart()">Shopping Cart</button> -->
     </div>
-
+</div>
 
     <!-- <h1>{{this.name}}</h1>
       <img src="{{thisImg}}"></img>
@@ -118,7 +141,3 @@
         <button ng-click="addToCart()">Add to cart</button>
         <span ng-show="addSuccessful">Succesfully added to cart!</span>
       </div> -->
-
-
-  </body>
-</html>
