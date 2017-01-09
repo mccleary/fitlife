@@ -5,7 +5,8 @@
     <title>FitLife</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- My stylesheet -->
-    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="slicknav.css" />
+    <link href="styles.css" rel="stylesheet">
     <!-- Bootstrap stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Bootstrap js stylesheet -->
@@ -32,15 +33,18 @@
         </div> -->
 
         <!-- Login, Logout, Register buttons -->
-        <div class="col col-md-12">
-          <a href="#/"><img src="images/apple.png" height="150px" width="150px" alt="FitLife" /></a>
-          <a href="#/login"><button type="submit" class="btn userBtns" ng-show="userButton">Login</button></a>
-          <a href="#/signup"><button type="submit" class="btn userBtns" ng-show="userButton">New User?</button></a>
+        <!-- <div class="col col-md-12">
+          <a href="#/"><img src="images/apple.png" height="100px" width="100px" alt="FitLife" /></a> -->
+          <!-- <a href="#/login"><button type="submit" class="btn userBtns" ng-show="userButton">Login</button></a>
+          <a href="#/signup"><button type="submit" class="btn userBtns" ng-show="userButton">New User?</button></a> -->
           <!-- <h2 class="userBtns">Welcome, {{user}}!</h2> -->
-          <a><button ng-click="logout()" type="submit" class="btn userBtns" ng-hide="userButton">Logout</button></a>
-        </div>
+          <!-- <a><button ng-click="logout()" type="submit" class="btn userBtns" ng-hide="userButton">Logout</button></a> -->
+        <!-- </div> -->
 
-        <!-- Navigation Section -->
+        <!-- Header Navigation Section -->
+    <!-- <header class="header" role="banner" id="header">
+      <div class="container"> -->
+        <!-- <nav>
         <div class="row" id="nav">
           <ul class="nav nav-tabs nav-justified">
             <li role="presentation"><a ui-sref="home">Home</a></li>
@@ -48,34 +52,61 @@
             <li role="presentation"><a ui-sref="products">Products</a></li>
             <li role="presentation"><a ui-sref="contact">Contact</a></li>
             <li role="presentation"><a ui-sref="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i></a></li>
-            <!-- <li role="presentation"><a ui-sref="delivery">Delivery</a></li> -->
-            <!-- <li role="presentation"><a ui-sref="payment">Payment</a></li> -->
           </ul>
         </div>
-        <!-- only use #home for single page site, otherwise use "home" -->
+        </nav> -->
+    <!-- </div>
+    </header> -->
 
-        <!-- </nav> -->
+    <!-- Header -->
+    <!-- <header class="header" role="banner" id="header">
+      <div class="container">
+
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i></a></li>
+          </ul>
+        </nav>
+
+        <h1><a href="#"><img src="images/apple.png" height="120px" width="110px" alt=""></a></h1>
+
       </div>
-    </div>
-
-
-
+    </header> -->
+    <!-- Header ends -->
 
 
 
     <main ui-view></main>
 
-  <footer class="source-org copyright footer text-center">
+
+  <!-- Footer -->
+  <!-- <footer class="source-org copyright footer text-center">
     <div class="container">
       <a href="#/"><img src="images/apple.png" height="50px" width="50px" alt="FitLife" /></a>
       <br>
-      <p>Copyright  ©2017  Made with
+      <p>Copyright ©2017 <a href="http://http://54.190.52.82:5000/">FitLife</a></p>
+      Made with
         <i class="fa fa-heart" aria-hidden="true"></i>
          &amp;
         <i class="fa fa-music" aria-hidden="true"></i>
-      </p>
     </div>
-  </footer>
+  </footer> -->
+  <!-- Footer Ends! -->
+
+  <!-- <a href="#header" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
+
+  <!-- Scripts -->
+  <!-- <script src="scripts/jquery-1.11.0.min.js"></script>
+  <script src="scripts/flexslider/jquery.flexslider-min.js"></script>
+  <script src="scripts/isotope.pkgd.min.js"></script>
+  <script src="scripts/jquery.slicknav.min.js"></script>
+  <script src="scripts/theme.js"></script>
+  <script src="scripts/form.js"></script> -->
+  <!-- Scripts Ends! -->
 
 
 

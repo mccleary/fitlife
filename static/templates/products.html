@@ -1,7 +1,170 @@
-<div class="container-fluid">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Products</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="slicknav.css" />
+<link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" role="banner" id="header">
+  <div class="container">
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i></a></li>
+      </ul>
+    </nav>
+
+    <h1><a href="#"><img src="images/apple.png" height="120px" width="110px" alt=""></a></h1>
+  </div>
+</header>
+<!-- Header ends -->
+
+<main class="front-page main" role="main">
+
+  <div class="container-fluid" ng-controller="productsController">
+    <h1 style="color:#00ff55" class="optionsHeader">Get Started Today!</h1>
+    <div class="row packages">
+      <div class="col col-md-2"></div>
+
+
+
+
+<section class="fullWhite">
+  <div class="container">
+    <h1 style="color:#00ff55">Welcome to the New You!</h1>
+
+      <!-- Price -->
+      <a class="anchor" id="price"></a>
+
+      <div class="price">
+
+        <h2 class="fancy"><span style="color:#00ff55">Products</span></h2>
+
+        <h4>We will tell you exactly what to eat, when to eat it, and provide you with our Menu Item Substitution List that will allow you to adjust your meals to your preferences. All items here can be found at you local grocery store and many items you may already have in your fridge.</h4><br><br>
+
+        <h3 style="color:#00ff55">What's included:</h3>
+          <div class="bullets">
+
+            <p><i class="fa fa-cutlery"></i>Your Easy to follow FitLife Daily Meal Plan</p>
+            <p><i class="fa fa-shopping-cart"></i> Menu Substitution Guide for help in creating your own meals</p>
+            <p><i class="fa fa-book"></i> Supporting Educational documentsand Complete instructions</p>
+            <p><i class="fa fa-heartbeat"></i> FREE Cardio Workout you can do right in the comfort of your own home</p>
+          </div><br><br>
+
+
+        <!-- Product1 Block -->
+        <div class="block">
+          <img ng-src="/images/dumbbells.jpg" width="250" height="202"><br>
+          <h3>Weekly Training Plan</h3>
+          <p>Training Package is for all fitness levels</p>
+          <hr>
+          <ul>
+            <li><i class="fa fa-venus-mars"></i> Full Body Guide</li>
+            <li><i class="fa fa-home"></i>Workout at home</li>
+            <li><i class="fa fa-check"></i>Perfect for Beginners to Advanced</li>
+            <li><i class="fa fa-heartbeat"></i>Only dumbbells needed</li>
+          </ul>
+          <button class="btn btn-primary cart" name="training" ng-click="addToCart('Training Manual'); showTraining=true">Add To Cart $60</button>
+          <button class="btn btn-danger" ng-show="showTraining" ng-click="removeFromCart('Training Manual'); showTraining=false">Remove</button>
+          <!-- <a href="#" class="order">Buy Now $60</a> -->
+        </div>
+        <!-- Product1 Block Ends! -->
+
+        <!-- Product2 Block -->
+        <div class="block promo">
+          <img ng-src="/images/steak.jpg" width="250" height="200"><br>
+          <h3>Meal Plan for Men</h3>
+          <p>A meal plan designed just for the men</p>
+          <hr>
+          <ul>
+            <li><i class="fa fa-male"></i> Eating Healthy Made Easy</li>
+            <li><i class="fa fa-apple"></i> Great Tasting Foods</li>
+            <li><i class="fa fa-cutlery"></i> Breakfast to Dinner</li>
+            <li><i class="fa fa-question"></i> No Guesswork</li>
+          </ul>
+          <button class="btn btn-primary cart" name="men" ng-click="addToCart('Mens Meal Plan'); showMen=true">Add to cart $60</button>
+          <button class="btn btn-danger" ng-show="showMen" ng-click="removeFromCart('Mens Meal Plan'); showMen=false">Remove</button>
+          <!-- <a href="#" class="order">Buy Now $60</a> -->
+        </div>
+        <!-- Product2 Block Ends! -->
+
+        <!-- Product3 Block -->
+        <div class="block">
+          <img ng-src="/images/chicken.jpg" width="250" height="200"><br>
+          <h3>Meal Plan for Women</h3>
+          <p>A meal plan designed just for the women</p>
+          <hr>
+          <ul>
+            <li><i class="fa fa-female"></i> Eating Healthy Made Easy</li>
+            <li><i class="fa fa-apple"></i> Great Tasting Foods</li>
+            <li><i class="fa fa-cutlery"></i> Breakfast to Dinner</li>
+            <li><i class="fa fa-question"></i> No Guesswork</li>
+          </ul>
+          <button class="btn btn-primary cart" name="women" ng-click="addToCart('Womens Meal Plan'); showWomen=true">Add to cart $60</button>
+          <button class="btn btn-danger" ng-show="showWomen" ng-click="removeFromCart('Womens Meal Plan'); showWomen=false">Remove</button>
+          <!-- <a href="#" class="order">Buy Now $60</a> -->
+        </div>
+        <!-- Product3 Block Ends! -->
+      </div>
+      <!-- Price Ends! -->
+      <p>**Upon purchase completion of your order, you will receive an email containing the link for your download within 24 hours via the email address provided at checkout (no items will be mailed)</p>
+    </div>
+  </section>
+
+</div>
+  <div class="row shoppingcart">
+    <a href="#/shopping_cart">
+  <button class="btn btn-success shoppingcart" type="submit">
+  Shopping Cart</button></a>
+  <!-- ng-click="shoppingCart()">Shopping Cart</button> -->
+</div>
+
+</main>
+<!-- Main Ends! -->
+
+<!-- Footer -->
+<footer class="source-org copyright footer">
+  <div class="container">
+    <a href="#/"><img src="images/apple.png" height="50px" width="50px" alt="FitLife" /></a>
+    <br>
+
+    <p>Copyright 2017 <a href="http://http://54.190.52.82:5000/">FitLife</a></p>
+    Made with
+      <i class="fa fa-heart" aria-hidden="true"></i>
+       &amp;
+      <i class="fa fa-music" aria-hidden="true"></i>
+  </div>
+</footer>
+<!-- Footer Ends! -->
+
+<!-- <a href="#header" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid"> -->
 
     <!-- <h3>Shop Our Products</h3> -->
-    <h1>Welcome to the New You!</h1>
+    <!-- <h1>Welcome to the New You!</h1>
     <p>
       We will tell you exactly what to eat, when to eat it and provide you with our Menu Item Substitution List that will allow you to adjust your meals to your tastes. All items can be found at your local grocery store and many items you may already have in your fridge. It’s so simple, failing is NOT an option!
     </p>
@@ -20,9 +183,9 @@
 
     </div>
 
-    <p>
+    <p> -->
       <!-- list 3 products -->
-    </p>
+    <!-- </p> -->
 
     <!-- <div class="container-fluid" ng-controller="productsController">
       <div class="row"> -->
@@ -32,10 +195,10 @@
       <!-- </div>
     </div> -->
 
-    <div class="container-fluid" ng-controller="productsController">
+    <!-- <div class="container-fluid" ng-controller="productsController">
       <h1 class="optionsHeader">Get Started Today!</h1>
       <div class="row packages">
-        <div class="col col-md-2"></div>
+        <div class="col col-md-2"></div> -->
 
       <!-- <ul class="products"> -->
       <!-- <li ng-repeat="product in products">
@@ -43,11 +206,11 @@
           <!-- <img ng-src="images/{{product.image_path}}" width="252" height="366"> -->
 
           <!-- Training Manual item -->
-          <div class="col col-md-4 individual">
+          <!-- <div class="col col-md-4 individual">
             <div class="options">
               <h3>FitLife Training and Meal Plans</h3><br>
               <h5>Get in shape and feel better </h5><br>
-              <img ng-src="/images/dumbbells.jpg" width="250" height="200"><br>
+              <img ng-src="/images/dumbbells.jpg" width="250" height="200"><br> -->
           <!-- <div class="dropdown open">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Select Height
@@ -59,7 +222,7 @@
             </div>
           </div> -->
 
-              <div class="row">
+              <!-- <div class="row">
                 <h3>Weekly Training Plan</h3>
                 <h5>Product Description:</h5>
                 <p>This full body, Weekly Training Guide will help you to maximize your results at home. Simple, easy to follow guide is perfect for Beginners to Advanced users.</p>
@@ -70,11 +233,11 @@
                 <button class="btn btn-primary cart" name="training" ng-click="addToCart('Training Manual'); showTraining=true">Add to cart</button>
                 <button class="btn btn-danger" ng-show="showTraining" ng-click="removeFromCart('Training Manual'); showTraining=false">Remove</button>
               </div>
-          </div>
+          </div> -->
 
           <!-- Men's Meal Plan item -->
 
-          <div class="col col-md-4 individual">
+          <!-- <div class="col col-md-4 individual">
             <div class="options">
             <img ng-src="/images/steak.jpg" width="250" height="200">
             <div class="row">
@@ -89,10 +252,10 @@
               <button class="btn btn-primary cart" name="men" ng-click="addToCart('Mens Meal Plan'); showMen=true">Add to cart</button>
               <button class="btn btn-danger" ng-show="showMen" ng-click="removeFromCart('Mens Meal Plan'); showMen=false">Remove</button>
             </div>
-          </div>
+          </div> -->
 
           <!-- Women's Meal Plan item -->
-          <div class="col col-md-4 individual">
+          <!-- <div class="col col-md-4 individual">
             <div class="options">
               <img ng-src="/images/chicken.jpg" width="250" height="200">
               <div class="row">
@@ -107,20 +270,20 @@
                 <button class="btn btn-primary cart" name="women" ng-click="addToCart('Womens Meal Plan'); showWomen=true">Add to cart</button>
                 <button class="btn btn-danger" ng-show="showWomen" ng-click="removeFromCart('Womens Meal Plan'); showWomen=false">Remove</button>
               </div>
-          </div>
+          </div> -->
 
         <!-- </a>
       </li> -->
     <!-- </ul> -->
 
-    </div>
+    <!-- </div>
       <div class="row shoppingcart">
         <a href="#/shopping_cart">
       <button class="btn btn-success shoppingcart" type="submit">
       Shopping Cart</button></a>
-      <!-- ng-click="shoppingCart()">Shopping Cart</button> -->
-    </div>
-</div>
+      <!-ng-click="shoppingCart()">Shopping Cart</button> -->
+    <!-- </div> -->
+<!-- </div> -->
 
     <!-- <h1>{{this.name}}</h1>
       <img src="{{thisImg}}"></img>

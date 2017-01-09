@@ -1,28 +1,74 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Shopping Cart</title>
-  </head>
-  <body>
-    <div ng-controller="productsController" ng-init = "getCart()">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shopping Cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <h1>Shopping Cart</h1>
+<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="slicknav.css"/>
+<link rel="stylesheet" href="styles.css"/>
+
+</head>
 
 
-    <h1>Items in your shopping cart:</h1>
-    {{itemsArray}}
-    <ul>
-      <li ng-repeat="name in itemsArray">
-        {{name}} - $60.00
-        <input type="radio" ng-model="my.favorite" ng-value="name" id="{{name}}" name="favorite">
-      </li>
-      <li><button class="btn btn-danger removeItemFromCart" ng-click="removeItemFromCart('{{my.favorite}}')">Delete From Cart</button></li>
+<body>
+<!-- Header -->
+<header class="header" role="banner" id="header">
+  <div class="container">
 
-    </ul>
-    Total: {{total  | currency}}
-    <button ng-click="pay()">Checkout</button>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size: 25px"></i></a></li>
+      </ul>
+    </nav>
+
+    <h1><a href="#"><img src="images/apple.png" height="120px" width="110px" alt=""></a></h1>
   </div>
+</header>
+<!-- Header ends -->
 
-  </body>
+<body>
+  <div ng-controller="productsController" ng-init = "getCart()">
+
+  <h1 style="color:#00ff55">Shopping Cart</h1>
+
+  <h1 style="color:#00ff55">Items in your shopping cart:</h1>
+    <!-- {{itemsArray}} -->
+  <ul>
+    <li ng-repeat="name in itemsArray">
+      {{name}} - $60.00
+      <input type="radio" ng-model="my.favorite" ng-value="name" id="{{name}}" name="favorite">
+    </li>
+    <li><button class="btn btn-danger removeItemFromCart" ng-click="removeItemFromCart('{{my.favorite}}')">Delete From Cart</button></li>
+
+  </ul>
+  Total: {{total  | currency}}
+  <button ng-click="pay()">Checkout</button>
+</div><br><br><br><br><br><br><br><br>
+
+
+
+<!-- Footer -->
+<footer class="source-org copyright footer">
+  <div class="container">
+    <a href="#/"><img src="images/apple.png" height="50px" width="50px" alt="FitLife" /></a>
+    <br>
+
+    <p>Copyright 2017 <a href="http://http://54.190.52.82:5000/">FitLife</a></p>
+    Made with
+      <i class="fa fa-heart" aria-hidden="true"></i>
+       &amp;
+      <i class="fa fa-music" aria-hidden="true"></i>
+  </div>
+</footer>
+<!-- Footer Ends! -->
+
+<!-- <a href="#top" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
+
+</body>
 </html>
