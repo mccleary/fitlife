@@ -344,7 +344,7 @@ nav ul {
     text-transform: none; }
   .price .block {
     background: #00ff55;
-    min-height: 440px;
+    min-height: 595px;
     padding: 45px 2% 80px;
     margin-right: 0;
     width: 33.333%;
@@ -381,6 +381,11 @@ nav ul {
         color: white;
         font-size: 18px;
         margin: 0 5px 0 0; }
+
+/*.price .block .purchase {
+  height: 560px;
+}*/
+
 
 .order {
   position: absolute;
