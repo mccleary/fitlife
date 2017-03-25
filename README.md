@@ -1,6 +1,6 @@
-#Fitness eCommerce App
+# Fitness eCommerce App
 
-##Overview
+## Overview
 
 * FitLife's eCommerce site is an online fitness meal plan and workout routine store built using the MEAN stack. Users can register an account, login, and order a customized meal plan or workout routine based on their gender, height and weight. Users can also request to receive a newsletter to be delivered weekly. Each user's order info will be save in the MongoDB database.
 
